@@ -1,0 +1,45 @@
+{
+  "expo": {
+    "name": "PANTAREI Survey",
+    "slug": "pantarei-survey",
+    "version": "1.0.1",
+    "sdkVersion": "54.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#2D5016"
+    },
+    "android": {
+      "package": "eu.pantarei.survey",
+      "versionCode": 1,
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "Allow PANTAREI to record voice responses for open-ended questions."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow PANTAREI to save exported data to your device.",
+          "savePhotosPermission": "Allow PANTAREI to save exported data."
+        }
+      ],
+      "expo-font",
+      "expo-asset"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "2e445d64-3c27-444c-9b3c-cff393d50bc4"
+      }
+    }
+  }
+}
