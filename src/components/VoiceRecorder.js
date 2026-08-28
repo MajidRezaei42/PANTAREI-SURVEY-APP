@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { useAudioRecorder, useAudioPlayer, AudioModule } from 'expo-audio';
+import { useAudioRecorder, useAudioPlayer, AudioModule, RecordingPresets } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import { AUDIO_LANGUAGES } from '../i18n/translations';
 
@@ -34,7 +34,15 @@ export default function VoiceRecorder({
   const [otherText, setOtherText] = useState(initialOther ? audioLanguage : '');
 
   const timerRef = useRef(null);
-  const recorder = useAudioRecorder({ extension: '.m4a', sampleRate: 44100, numberOfChannels: 1 });
+  // Full HIGH_QUALITY preset: sets bitRate (128 kbps) and the Android
+  // outputFormat/audioEncoder ('mpeg4'/'aac'). The previous partial object
+  // omitted all three, so Android fell back to a narrowband encoder no matter
+  // what the .m4a extension and 44.1 kHz sample rate said.
+  // Mono kept deliberately: right for single-speaker speech, half the size.
+  const recorder = useAudioRecorder({
+    ...RecordingPresets.HIGH_QUALITY,
+    numberOfChannels: 1,
+  });
   const player   = useAudioPlayer(recordingUri);
 
   useEffect(() => {
