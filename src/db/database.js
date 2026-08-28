@@ -35,6 +35,7 @@ export async function initDatabase() {
       consent_research INTEGER DEFAULT 0,
       consent_recording INTEGER DEFAULT 0,
       consent_age INTEGER DEFAULT 0,
+      consent_recording_at TEXT,
       background TEXT,
       age_group TEXT,
       gender TEXT,
@@ -48,13 +49,32 @@ export async function initDatabase() {
       duration_seconds INTEGER
     );
   `);
+
+  // Migration: older installs were created before consent_recording_at existed.
+  // ALTER TABLE ADD COLUMN is a no-op we must guard, so check the column list.
+  try {
+    const cols = await getDB().getAllAsync(`PRAGMA table_info(responses);`);
+    if (!cols.some(c => c.name === 'consent_recording_at')) {
+      await getDB().execAsync(`ALTER TABLE responses ADD COLUMN consent_recording_at TEXT;`);
+    }
+  } catch (e) {
+    // Non-fatal: the column simply stays absent on this device.
+  }
 }
 
-export async function createResponse(participantId, surveyLanguage) {
+export async function createResponse(participantId, surveyLanguage, consents = {}) {
+  const { research = 0, recording = 0, age = 0 } = consents;
   const result = await getDB().runAsync(
-    `INSERT INTO responses (participant_id, timestamp, survey_language, completed)
-     VALUES (?, ?, ?, 0)`,
-    [participantId, new Date().toISOString(), surveyLanguage]
+    `INSERT INTO responses
+       (participant_id, timestamp, survey_language,
+        consent_research, consent_recording, consent_age,
+        consent_recording_at, completed)
+     VALUES (?, ?, ?, ?, ?, ?, ?, 0)`,
+    [
+      participantId, new Date().toISOString(), surveyLanguage,
+      research ? 1 : 0, recording ? 1 : 0, age ? 1 : 0,
+      recording ? new Date().toISOString() : null,
+    ]
   );
   return result.lastInsertRowId;
 }
@@ -115,6 +135,7 @@ export async function getTopRankCounts() {
 function buildHeaders() {
   return [
     'participant_id', 'timestamp', 'survey_language',
+    'consent_research', 'consent_recording', 'consent_age', 'consent_recording_at',
     'background', 'age_group', 'gender', 'first_time',
     ...SUSTAIN_CODES,
     ...SIDE_BY_SIDE_CODES,

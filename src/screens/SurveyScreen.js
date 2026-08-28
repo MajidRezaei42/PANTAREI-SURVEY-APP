@@ -33,7 +33,10 @@ import {
 const GREEN = '#2D5016';
 
 export default function SurveyScreen({ route, navigation }) {
-  const { responseId, participantId, consentRecording } = route.params;
+  const { responseId, participantId } = route.params;
+  // Recording consent can be granted mid-survey: participants often forget the
+  // optional tick-box and only say "yes, record me" once they reach the question.
+  const [recConsent, setRecConsent] = useState(!!route.params.consentRecording);
   const { t } = useLanguage();
   const startTime = useRef(Date.now());
 
@@ -77,6 +80,13 @@ export default function SurveyScreen({ route, navigation }) {
   }
 
   const save = fields => updateResponse(responseId, fields).catch(console.warn);
+
+  // Participant consents at the recorder itself. Stored with a timestamp so the
+  // record shows consent was given later in the session, not at the start.
+  const grantRecordingConsent = () => {
+    setRecConsent(true);
+    save({ consent_recording: 1, consent_recording_at: new Date().toISOString() });
+  };
 
   // ----- page model -----
   const pages = useMemo(() => {
@@ -146,6 +156,7 @@ export default function SurveyScreen({ route, navigation }) {
         ...sustain, ...ratings,
         ranking: order.map(p => p.id).join(','),
         open_comment: openComment,
+        consent_recording: recConsent ? 1 : 0,
         audio_language: audioLang,
         recording_open: recOpen,
         completed: 1, duration_seconds: dur,
@@ -277,7 +288,8 @@ export default function SurveyScreen({ route, navigation }) {
             audioLanguage={audioLang}
             existingUri={recOpen}
             color="#7A5C10"
-            disabled={!consentRecording}
+            disabled={!recConsent}
+            onGrantConsent={grantRecordingConsent}
             t={t} />
         </View>
       );

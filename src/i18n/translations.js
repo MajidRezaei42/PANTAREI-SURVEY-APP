@@ -187,6 +187,28 @@ export const TRANSLATIONS = {
   stop: { EN: 'Stop', DE: 'Stopp', FR: 'Arrêter' },
   voiceRecorded: { EN: 'Voice recorded', DE: 'Aufnahme gespeichert', FR: 'Voix enregistrée' },
   recordingNotConsented: { EN: 'Recording not consented', DE: 'Aufnahme nicht zugestimmt', FR: 'Enregistrement non consenti' },
+  consentLaterTitle: {
+    EN: 'Voice recording is off',
+    DE: 'Sprachaufnahme ist deaktiviert',
+    FR: "L'enregistrement vocal est désactivé",
+  },
+  consentLaterBody: {
+    EN: 'You did not tick the voice-recording box at the start. You can turn it on now if you wish — it stays optional.',
+    DE: 'Sie haben das Kästchen für die Sprachaufnahme am Anfang nicht angekreuzt. Sie können sie jetzt aktivieren, wenn Sie möchten — sie bleibt freiwillig.',
+    FR: "Vous n'avez pas coché la case d'enregistrement vocal au début. Vous pouvez l'activer maintenant si vous le souhaitez — cela reste facultatif.",
+  },
+  consentLaterButton: {
+    EN: 'I agree — enable voice recording',
+    DE: 'Ich stimme zu — Sprachaufnahme aktivieren',
+    FR: "J'accepte — activer l'enregistrement vocal",
+  },
+  consentLaterConfirmTitle: {
+    EN: 'Confirm consent',
+    DE: 'Einwilligung bestätigen',
+    FR: 'Confirmer le consentement',
+  },
+  consentLaterCancel: { EN: 'Cancel', DE: 'Abbrechen', FR: 'Annuler' },
+  consentLaterAgree: { EN: 'I agree', DE: 'Ich stimme zu', FR: "J'accepte" },
 
   // ─────────────────────────────────────── NAV / SUBMIT ───────────
   next: { EN: 'Next →', DE: 'Weiter →', FR: 'Suivant →' },

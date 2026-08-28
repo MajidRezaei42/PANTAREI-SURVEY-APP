@@ -20,6 +20,7 @@ export default function VoiceRecorder({
   existingUri = null,
   color = '#2D5016',
   disabled = false,
+  onGrantConsent = null,
   t,
 }) {
   const [isRecording, setIsRecording]   = useState(false);
@@ -142,9 +143,42 @@ export default function VoiceRecorder({
   const fmt = s => `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 
   if (disabled) {
+    // No consent yet. If the screen gave us a way to grant it, offer that here
+    // rather than leaving the participant at a dead end.
+    if (!onGrantConsent) {
+      return (
+        <View style={styles.disabled}>
+          <Text style={styles.disabledText}>🎤 {t ? t('recordingNotConsented') : 'Recording not consented'}</Text>
+        </View>
+      );
+    }
+    const askConsent = () => {
+      Alert.alert(
+        t ? t('consentLaterConfirmTitle') : 'Confirm consent',
+        t ? t('consentRecording') : 'I consent to my voice being recorded for the open-ended questions.',
+        [
+          { text: t ? t('consentLaterCancel') : 'Cancel', style: 'cancel' },
+          { text: t ? t('consentLaterAgree') : 'I agree', onPress: onGrantConsent },
+        ]
+      );
+    };
     return (
-      <View style={styles.disabled}>
-        <Text style={styles.disabledText}>🎤 {t ? t('recordingNotConsented') : 'Recording not consented'}</Text>
+      <View style={styles.consentCard}>
+        <Text style={styles.consentTitle}>
+          🎤 {t ? t('consentLaterTitle') : 'Voice recording is off'}
+        </Text>
+        <Text style={styles.consentBody}>
+          {t ? t('consentLaterBody') : 'You did not tick the voice-recording box at the start. You can turn it on now if you wish — it stays optional.'}
+        </Text>
+        <TouchableOpacity
+          style={[styles.consentBtn, { backgroundColor: color }]}
+          onPress={askConsent}
+          activeOpacity={0.85}
+        >
+          <Text style={styles.consentBtnTxt}>
+            {t ? t('consentLaterButton') : 'I agree — enable voice recording'}
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -244,6 +278,14 @@ const styles = StyleSheet.create({
   doneLabel: { fontSize: 13, color: '#2D5016', fontStyle: 'italic', flex: 1 },
   playBtn: { fontSize: 26 },
   delBtn: { fontSize: 22 },
+  consentCard: {
+    marginTop: 10, padding: 14, borderRadius: 12,
+    backgroundColor: '#FFFBEA', borderWidth: 1, borderColor: '#E5D5A0',
+  },
+  consentTitle:  { fontSize: 14, fontWeight: '700', color: '#6B5410', marginBottom: 6 },
+  consentBody:   { fontSize: 13, color: '#6B5410', lineHeight: 19, marginBottom: 12 },
+  consentBtn:    { borderRadius: 22, paddingVertical: 11, paddingHorizontal: 18, alignItems: 'center' },
+  consentBtnTxt: { fontSize: 14, fontWeight: '700', color: '#FFF' },
   disabled: { marginTop: 6, flexDirection: 'row', alignItems: 'center', gap: 6 },
   disabledText: { fontSize: 12, color: '#BBB', fontStyle: 'italic' },
 });

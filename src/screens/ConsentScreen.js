@@ -23,7 +23,9 @@ export default function ConsentScreen({ navigation }) {
     setLoading(true);
     try {
       const pid = generateParticipantId();
-      const rid = await createResponse(pid, lang);
+      const rid = await createResponse(pid, lang, {
+        research: cResearch, recording: cRecording, age: cAge,
+      });
       navigation.navigate('Survey', {
         responseId: rid, participantId: pid, consentRecording: cRecording,
       });
