@@ -39,7 +39,6 @@ export default function HomeScreen({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.body}>
 
-
         {/* Language chooser — big, on the very first page */}
         <View style={styles.card}>
           <Text style={styles.langTitle}>🌐 {t('chooseLanguage')}</Text>
