@@ -7,7 +7,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PanelIcon from './PanelIcon';
 import { PANEL_COLORS } from '../utils/questions';
 import { useLanguage } from '../i18n/LanguageContext';
-import { fs } from '../utils/responsive';
+import { fs, dp } from '../utils/responsive';
 
 const STEPS = [1, 2, 3, 4, 5, 6, 7];
 
@@ -84,13 +84,13 @@ const styles = StyleSheet.create({
   body:     { flex: 1 },
   topRow:   { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 8 },
   name:     { fontSize: fs(13), fontWeight: '600', color: '#1A1814', flex: 1, lineHeight: fs(18), marginRight: 6 },
-  badge:    { minWidth: 28, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, flexShrink: 0 },
+  badge:    { minWidth: dp(28), height: dp(24), borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, flexShrink: 0 },
   badgeTxt: { color: '#FFF', fontWeight: '800', fontSize: fs(13) },
 
   btnRow: { flexDirection: 'row', gap: 4 },
   btn: {
     flex: 1,
-    height: 36,
+    height: dp(36),
     borderRadius: 8,
     borderWidth: 1.5,
     alignItems: 'center',

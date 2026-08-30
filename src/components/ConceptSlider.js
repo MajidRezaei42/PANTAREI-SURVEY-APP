@@ -5,7 +5,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useLanguage } from '../i18n/LanguageContext';
-import { fs } from '../utils/responsive';
+import { fs, dp } from '../utils/responsive';
 
 const STEPS = [1, 2, 3, 4, 5, 6, 7];
 
@@ -69,13 +69,13 @@ const styles = StyleSheet.create({
   qRow:     { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 10, gap: 8 },
   code:     { fontSize: fs(11), fontWeight: '800', letterSpacing: 0.5, marginTop: 2, minWidth: 32 },
   qText:    { flex: 1, fontSize: fs(14), color: '#1A1814', lineHeight: fs(20) },
-  badge:    { minWidth: 28, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, flexShrink: 0 },
+  badge:    { minWidth: dp(28), height: dp(24), borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, flexShrink: 0 },
   badgeTxt: { color: '#FFF', fontWeight: '800', fontSize: fs(13) },
 
   btnRow: { flexDirection: 'row', gap: 4 },
   btn: {
     flex: 1,
-    height: 38,
+    height: dp(38),
     borderRadius: 8,
     borderWidth: 1.5,
     alignItems: 'center',

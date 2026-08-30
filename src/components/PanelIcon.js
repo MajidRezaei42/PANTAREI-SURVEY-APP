@@ -5,8 +5,10 @@
 import React from 'react';
 import { Image, View, Text, StyleSheet } from 'react-native';
 import { PANEL_IMAGES, PANEL_COLORS } from '../utils/questions';
+import { dp } from '../utils/responsive';
 
 export default function PanelIcon({ panelId, size = 48 }) {
+  size = dp(size);   // grow with the screen so thumbnails match the text
   const img   = PANEL_IMAGES[panelId];
   const color = PANEL_COLORS[panelId] || '#888';
 

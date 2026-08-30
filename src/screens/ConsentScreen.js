@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'rea
 import { createResponse, generateParticipantId } from '../db/database';
 import { useLanguage } from '../i18n/LanguageContext';
 import LanguageSwitcher from '../components/LanguageSwitcher';
-import { fs } from '../utils/responsive';
+import { fs, sp } from '../utils/responsive';
 
 export default function ConsentScreen({ navigation }) {
   const { lang, t } = useLanguage();
@@ -77,13 +77,13 @@ export default function ConsentScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F5F8F2' },
-  body: { padding: 16, paddingBottom: 40 },
+  body: { padding: sp(16), paddingBottom: sp(40) },
   topBar: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, marginBottom: 12 },
   sectionTitle: { fontSize: fs(17), fontWeight: '700', color: '#1A1814', flex: 1 },
-  gdprBox: { backgroundColor: '#FDF6E3', borderRadius: 10, padding: 14, borderLeftWidth: 4, borderLeftColor: '#7A5C10', marginBottom: 14 },
+  gdprBox: { backgroundColor: '#FDF6E3', borderRadius: 10, padding: sp(14), borderLeftWidth: 4, borderLeftColor: '#7A5C10', marginBottom: 14 },
   gdprText: { fontSize: fs(12), color: '#555', lineHeight: fs(18) },
-  card: { backgroundColor: '#FFF', borderRadius: 12, padding: 14, elevation: 2 },
-  checkRow: { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: 10, gap: 12 },
+  card: { backgroundColor: '#FFF', borderRadius: 12, padding: sp(14), elevation: 2 },
+  checkRow: { flexDirection: 'row', alignItems: 'flex-start', paddingVertical: sp(10), gap: sp(12) },
   box: { width: 24, height: 24, borderRadius: 4, borderWidth: 2, borderColor: '#2D5016', alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
   boxOn: { backgroundColor: '#2D5016' },
   tick: { color: '#FFF', fontWeight: '900', fontSize: fs(14) },
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   req: { color: '#CC2020', fontWeight: '700' },
   div: { height: 1, backgroundColor: '#EEE', marginHorizontal: -4 },
   reqNote: { fontSize: fs(11), color: '#999', marginTop: 6, marginBottom: 14 },
-  goBtn: { backgroundColor: '#2D5016', borderRadius: 14, paddingVertical: 16, alignItems: 'center', marginBottom: 12, elevation: 3 },
+  goBtn: { backgroundColor: '#2D5016', borderRadius: 14, paddingVertical: sp(16), alignItems: 'center', marginBottom: 12, elevation: 3 },
   goBtnOff: { backgroundColor: '#AAA' },
   goTxt: { fontSize: fs(17), fontWeight: '700', color: '#FFF' },
   back: { alignItems: 'center', paddingVertical: 8 },

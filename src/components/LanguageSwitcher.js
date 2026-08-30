@@ -1,5 +1,5 @@
 // src/components/LanguageSwitcher.js
-// Compact EN/DE/FR toggle. Placed in headers so the user can switch
+// Compact EN/DE/FR/IT toggle. Placed in headers so the user can switch
 // language at any moment during the survey (requirement #2).
 
 import React from 'react';
@@ -28,7 +28,7 @@ export default function LanguageSwitcher({ light = false }) {
             <Text style={[
               styles.txt,
               light ? styles.txtLight : styles.txtDark,
-              active && styles.txtActive,
+              active && (light ? styles.txtActiveLight : styles.txtActiveDark),
             ]}>
               {l.code}
             </Text>
@@ -40,8 +40,8 @@ export default function LanguageSwitcher({ light = false }) {
 }
 
 const styles = StyleSheet.create({
-  row: { flexDirection: 'row', gap: 4 },
-  pill: { paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12, borderWidth: 1 },
+  row: { flexDirection: 'row', gap: 3, flexShrink: 1 },
+  pill: { paddingHorizontal: 7, paddingVertical: 4, borderRadius: 12, borderWidth: 1 },
   pillLight: { borderColor: 'rgba(255,255,255,0.5)' },
   pillDark: { borderColor: '#CCC' },
   activeLight: { backgroundColor: '#FFF', borderColor: '#FFF' },
@@ -49,5 +49,9 @@ const styles = StyleSheet.create({
   txt: { fontSize: fs(12), fontWeight: '700' },
   txtLight: { color: 'rgba(255,255,255,0.85)' },
   txtDark: { color: '#666' },
-  txtActive: { color: '#2D5016' },
+  // Active label must contrast with the active PILL, not with the header.
+  // light  variant -> white pill  -> dark green text
+  // dark   variant -> green pill  -> white text
+  txtActiveLight: { color: '#2D5016' },
+  txtActiveDark:  { color: '#FFFFFF' },
 });

@@ -12,7 +12,7 @@ import React, { useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import PanelIcon from './PanelIcon';
 import { PANEL_COLORS } from '../utils/questions';
-import { fs } from '../utils/responsive';
+import { fs, dp } from '../utils/responsive';
 
 const ROW_H = 68;
 const GAP   = 8;
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     elevation: 2, shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
   },
-  rank:     { width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+  rank:     { width: dp(28), height: dp(28), borderRadius: dp(14), alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
   rankTxt:  { color: '#FFF', fontWeight: '800', fontSize: fs(14) },
   info:     { flex: 1 },
   name:     { fontSize: fs(14), fontWeight: '700', color: '#1A1814' },

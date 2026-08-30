@@ -25,7 +25,7 @@ import {
 } from 'react-native-gesture-handler';
 import PanelIcon from './PanelIcon';
 import { PANEL_COLORS } from '../utils/questions';
-import { fs } from '../utils/responsive';
+import { fs, dp } from '../utils/responsive';
 
 const ROW_H  = 72;
 const GAP    = 8;
@@ -240,12 +240,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12, gap: 12,
     shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
   },
-  rank:     { width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
+  rank:     { width: dp(28), height: dp(28), borderRadius: dp(14), alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
   rankTxt:  { color: '#FFF', fontWeight: '800', fontSize: fs(14) },
   info:     { flex: 1 },
   name:     { fontSize: fs(14), fontWeight: '700', color: '#1A1814' },
   desc:     { fontSize: fs(11), color: '#888', marginTop: 1 },
-  gripWrap: { width: 22, justifyContent: 'center', alignItems: 'center', gap: 4 },
-  gripLine: { width: 18, height: 2.5, backgroundColor: '#CCC', borderRadius: 1.5 },
+  gripWrap: { width: dp(22), justifyContent: 'center', alignItems: 'center', gap: 4 },
+  gripLine: { width: dp(18), height: dp(2.5), backgroundColor: '#CCC', borderRadius: 1.5 },
   hint:     { fontSize: fs(12), color: '#AAA', fontStyle: 'italic', textAlign: 'center', marginTop: 4 },
 });

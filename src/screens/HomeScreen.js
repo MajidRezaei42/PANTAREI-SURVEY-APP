@@ -5,7 +5,7 @@ import { initDatabase, getTotalCount, getTopRankCounts } from '../db/database';
 import { PANELS, PANEL_COLORS } from '../utils/questions';
 import { useLanguage } from '../i18n/LanguageContext';
 import { LANGUAGES } from '../i18n/translations';
-import { fs } from '../utils/responsive';
+import { fs, sp } from '../utils/responsive';
 
 export default function HomeScreen({ navigation }) {
   const { lang, setLang, t } = useLanguage();
@@ -38,6 +38,7 @@ export default function HomeScreen({ navigation }) {
       </View>
 
       <ScrollView contentContainerStyle={styles.body}>
+
 
         {/* Language chooser — big, on the very first page */}
         <View style={styles.card}>
@@ -104,14 +105,14 @@ export default function HomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F5F8F2' },
-  header: { backgroundColor: '#2D5016', paddingTop: 50, paddingBottom: 24, paddingHorizontal: 20, alignItems: 'center' },
+  header: { backgroundColor: '#2D5016', paddingTop: sp(50), paddingBottom: sp(24), paddingHorizontal: sp(20), alignItems: 'center' },
   title: { fontSize: fs(32), fontWeight: '800', color: '#FFF', letterSpacing: 2 },
   sub: { fontSize: fs(13), color: '#A8C890', marginTop: 4, textAlign: 'center' },
-  body: { padding: 20, paddingBottom: 40 },
-  card: { backgroundColor: '#FFF', borderRadius: 12, padding: 16, marginBottom: 14, borderLeftWidth: 4, borderLeftColor: '#2D5016', elevation: 2 },
+  body: { padding: sp(20), paddingBottom: sp(40) },
+  card: { backgroundColor: '#FFF', borderRadius: 12, padding: sp(16), marginBottom: sp(14), borderLeftWidth: 4, borderLeftColor: '#2D5016', elevation: 2 },
   langTitle: { fontSize: fs(15), fontWeight: '700', color: '#2D5016', marginBottom: 12 },
-  langRow: { flexDirection: 'row', gap: 8 },
-  langBtn: { flex: 1, alignItems: 'center', paddingVertical: 12, borderRadius: 10, borderWidth: 2, borderColor: '#DDD', backgroundColor: '#FAFAFA' },
+  langRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  langBtn: { flexGrow: 1, flexBasis: '45%', alignItems: 'center', paddingVertical: 12, borderRadius: 10, borderWidth: 2, borderColor: '#DDD', backgroundColor: '#FAFAFA' },
   langBtnActive: { borderColor: '#2D5016', backgroundColor: '#E8F5E0' },
   langFlag: { fontSize: fs(26), marginBottom: 4 },
   langLabel: { fontSize: fs(13), color: '#666', fontWeight: '600' },

@@ -21,10 +21,11 @@ const shortest = Math.min(width, height);
 // Design baseline the existing styles assume.
 const BASE_WIDTH = 375;
 
-// Tablets are much wider but held further away, so text should NOT grow
-// linearly with the screen — a 2x wider screen does not want 2x type.
-// Damping keeps the increase proportionate.
-const DAMPING = 0.5;
+// Tablets are wider and held a little further away, so text should not grow
+// perfectly linearly with the screen. But it should grow nearly that much:
+// this app is a kiosk-style survey read at arm's length while standing, and
+// the earlier conservative value left a 10" tablet with half its screen empty.
+const DAMPING = 0.82;
 
 // Nothing smaller than this, at any device size. The survey is run outdoors by
 // participants of all ages; 10-11pt was below comfortable reading size even on
@@ -34,8 +35,9 @@ const MIN_FONT_SIZE = 12;
 const raw = shortest / BASE_WIDTH;
 const damped = raw <= 1 ? raw : 1 + (raw - 1) * DAMPING;
 
-// Clamp: never shrink much on small phones, never balloon on large tablets.
-export const SCALE = Math.min(Math.max(damped, 0.95), 1.5);
+// Clamp: never shrink much on small phones; the upper bound only bites on
+// screens larger than a 10" tablet, where type would otherwise become silly.
+export const SCALE = Math.min(Math.max(damped, 0.95), 2.0);
 
 // Android's smallest-width buckets treat >=600dp as a tablet.
 export const isTablet = shortest >= 600;
@@ -57,4 +59,13 @@ export function fs(size) {
  */
 export function sp(size) {
   return Math.round(PixelRatio.roundToNearestPixel(size * (1 + (SCALE - 1) * 0.6)));
+}
+
+/**
+ * Scale a fixed UI dimension — icon sizes, thumbnails, control heights.
+ * Tracks fs() closely: these elements sit beside text and look wrong if the
+ * type grows while they stay phone-sized.
+ */
+export function dp(size) {
+  return Math.round(PixelRatio.roundToNearestPixel(size * SCALE));
 }
