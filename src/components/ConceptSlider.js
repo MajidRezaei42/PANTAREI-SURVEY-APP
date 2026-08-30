@@ -5,6 +5,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useLanguage } from '../i18n/LanguageContext';
+import { fs } from '../utils/responsive';
 
 const STEPS = [1, 2, 3, 4, 5, 6, 7];
 
@@ -66,10 +67,10 @@ export default function ConceptSlider({ code, questionText, value, onChange, col
 const styles = StyleSheet.create({
   wrap:     { paddingVertical: 12, paddingHorizontal: 14, borderBottomWidth: 1, borderBottomColor: '#E8E8E8' },
   qRow:     { flexDirection: 'row', alignItems: 'flex-start', marginBottom: 10, gap: 8 },
-  code:     { fontSize: 11, fontWeight: '800', letterSpacing: 0.5, marginTop: 2, minWidth: 32 },
-  qText:    { flex: 1, fontSize: 14, color: '#1A1814', lineHeight: 20 },
+  code:     { fontSize: fs(11), fontWeight: '800', letterSpacing: 0.5, marginTop: 2, minWidth: 32 },
+  qText:    { flex: 1, fontSize: fs(14), color: '#1A1814', lineHeight: fs(20) },
   badge:    { minWidth: 28, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, flexShrink: 0 },
-  badgeTxt: { color: '#FFF', fontWeight: '800', fontSize: 13 },
+  badgeTxt: { color: '#FFF', fontWeight: '800', fontSize: fs(13) },
 
   btnRow: { flexDirection: 'row', gap: 4 },
   btn: {
@@ -81,13 +82,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFF',
   },
-  btnTxt:       { fontSize: 14, fontWeight: '600', color: '#555' },
+  btnTxt:       { fontSize: fs(14), fontWeight: '600', color: '#555' },
   btnTxtActive: { color: '#FFF', fontWeight: '800' },
 
   anchors:  { flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 },
-  anchorL:  { fontSize: 10, color: '#AAA', fontStyle: 'italic' },
-  anchorR:  { fontSize: 10, color: '#AAA', fontStyle: 'italic' },
+  anchorL:  { fontSize: fs(10), color: '#AAA', fontStyle: 'italic' },
+  anchorR:  { fontSize: fs(10), color: '#AAA', fontStyle: 'italic' },
 
-  desc:      { fontSize: 12, fontWeight: '600', fontStyle: 'italic', marginTop: 3 },
-  descEmpty: { fontSize: 11, color: '#CCCCCC', fontStyle: 'italic', marginTop: 3 },
+  desc:      { fontSize: fs(12), fontWeight: '600', fontStyle: 'italic', marginTop: 3 },
+  descEmpty: { fontSize: fs(11), color: '#CCCCCC', fontStyle: 'italic', marginTop: 3 },
 });

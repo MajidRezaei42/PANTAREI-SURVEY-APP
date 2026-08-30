@@ -6,6 +6,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { LANGUAGES } from '../i18n/translations';
 import { useLanguage } from '../i18n/LanguageContext';
+import { fs } from '../utils/responsive';
 
 export default function LanguageSwitcher({ light = false }) {
   const { lang, setLang } = useLanguage();
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   pillDark: { borderColor: '#CCC' },
   activeLight: { backgroundColor: '#FFF', borderColor: '#FFF' },
   activeDark: { backgroundColor: '#2D5016', borderColor: '#2D5016' },
-  txt: { fontSize: 12, fontWeight: '700' },
+  txt: { fontSize: fs(12), fontWeight: '700' },
   txtLight: { color: 'rgba(255,255,255,0.85)' },
   txtDark: { color: '#666' },
   txtActive: { color: '#2D5016' },

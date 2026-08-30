@@ -25,6 +25,7 @@ import {
 } from 'react-native-gesture-handler';
 import PanelIcon from './PanelIcon';
 import { PANEL_COLORS } from '../utils/questions';
+import { fs } from '../utils/responsive';
 
 const ROW_H  = 72;
 const GAP    = 8;
@@ -230,7 +231,7 @@ export default function DragRanking({ order, onReorder, t }) {
 const styles = StyleSheet.create({
   wrap:     { marginTop: 4 },
   endRow:   { alignItems: 'center', paddingVertical: 4 },
-  endTxt:   { fontSize: 12, fontWeight: '700', letterSpacing: 0.5 },
+  endTxt:   { fontSize: fs(12), fontWeight: '700', letterSpacing: 0.5 },
   row: {
     position: 'absolute', left: 0, right: 0,
     height: ROW_H,
@@ -240,11 +241,11 @@ const styles = StyleSheet.create({
     shadowColor: '#000', shadowOffset: { width: 0, height: 2 },
   },
   rank:     { width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
-  rankTxt:  { color: '#FFF', fontWeight: '800', fontSize: 14 },
+  rankTxt:  { color: '#FFF', fontWeight: '800', fontSize: fs(14) },
   info:     { flex: 1 },
-  name:     { fontSize: 14, fontWeight: '700', color: '#1A1814' },
-  desc:     { fontSize: 11, color: '#888', marginTop: 1 },
+  name:     { fontSize: fs(14), fontWeight: '700', color: '#1A1814' },
+  desc:     { fontSize: fs(11), color: '#888', marginTop: 1 },
   gripWrap: { width: 22, justifyContent: 'center', alignItems: 'center', gap: 4 },
   gripLine: { width: 18, height: 2.5, backgroundColor: '#CCC', borderRadius: 1.5 },
-  hint:     { fontSize: 12, color: '#AAA', fontStyle: 'italic', textAlign: 'center', marginTop: 4 },
+  hint:     { fontSize: fs(12), color: '#AAA', fontStyle: 'italic', textAlign: 'center', marginTop: 4 },
 });

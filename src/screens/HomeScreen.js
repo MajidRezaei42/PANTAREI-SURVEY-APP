@@ -5,6 +5,7 @@ import { initDatabase, getTotalCount, getTopRankCounts } from '../db/database';
 import { PANELS, PANEL_COLORS } from '../utils/questions';
 import { useLanguage } from '../i18n/LanguageContext';
 import { LANGUAGES } from '../i18n/translations';
+import { fs } from '../utils/responsive';
 
 export default function HomeScreen({ navigation }) {
   const { lang, setLang, t } = useLanguage();
@@ -104,28 +105,28 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#F5F8F2' },
   header: { backgroundColor: '#2D5016', paddingTop: 50, paddingBottom: 24, paddingHorizontal: 20, alignItems: 'center' },
-  title: { fontSize: 32, fontWeight: '800', color: '#FFF', letterSpacing: 2 },
-  sub: { fontSize: 13, color: '#A8C890', marginTop: 4, textAlign: 'center' },
+  title: { fontSize: fs(32), fontWeight: '800', color: '#FFF', letterSpacing: 2 },
+  sub: { fontSize: fs(13), color: '#A8C890', marginTop: 4, textAlign: 'center' },
   body: { padding: 20, paddingBottom: 40 },
   card: { backgroundColor: '#FFF', borderRadius: 12, padding: 16, marginBottom: 14, borderLeftWidth: 4, borderLeftColor: '#2D5016', elevation: 2 },
-  langTitle: { fontSize: 15, fontWeight: '700', color: '#2D5016', marginBottom: 12 },
+  langTitle: { fontSize: fs(15), fontWeight: '700', color: '#2D5016', marginBottom: 12 },
   langRow: { flexDirection: 'row', gap: 8 },
   langBtn: { flex: 1, alignItems: 'center', paddingVertical: 12, borderRadius: 10, borderWidth: 2, borderColor: '#DDD', backgroundColor: '#FAFAFA' },
   langBtnActive: { borderColor: '#2D5016', backgroundColor: '#E8F5E0' },
-  langFlag: { fontSize: 26, marginBottom: 4 },
-  langLabel: { fontSize: 13, color: '#666', fontWeight: '600' },
+  langFlag: { fontSize: fs(26), marginBottom: 4 },
+  langLabel: { fontSize: fs(13), color: '#666', fontWeight: '600' },
   langLabelActive: { color: '#2D5016', fontWeight: '800' },
-  desc: { fontSize: 14, color: '#333', lineHeight: 21, marginBottom: 8 },
-  statTitle: { fontSize: 13, fontWeight: '600', color: '#555', marginBottom: 12 },
+  desc: { fontSize: fs(14), color: '#333', lineHeight: fs(21), marginBottom: 8 },
+  statTitle: { fontSize: fs(13), fontWeight: '600', color: '#555', marginBottom: 12 },
   statRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 8 },
   statBox: { borderWidth: 1.5, borderRadius: 8, paddingVertical: 8, paddingHorizontal: 6, alignItems: 'center', width: '18%' },
-  statLabel: { fontSize: 10, fontWeight: '700' },
-  statNum: { fontSize: 22, fontWeight: '800', marginTop: 2 },
-  totalText: { fontSize: 13, color: '#777', textAlign: 'right', marginTop: 4 },
+  statLabel: { fontSize: fs(10), fontWeight: '700' },
+  statNum: { fontSize: fs(22), fontWeight: '800', marginTop: 2 },
+  totalText: { fontSize: fs(13), color: '#777', textAlign: 'right', marginTop: 4 },
   startBtn: { backgroundColor: '#2D5016', borderRadius: 16, paddingVertical: 18, alignItems: 'center', marginBottom: 12, elevation: 4 },
-  startTxt: { fontSize: 20, fontWeight: '700', color: '#FFF' },
+  startTxt: { fontSize: fs(20), fontWeight: '700', color: '#FFF' },
   adminRow: { flexDirection: 'row', justifyContent: 'center', marginBottom: 24 },
   adminBtn: { borderWidth: 1, borderColor: '#CCC', borderRadius: 8, paddingVertical: 8, paddingHorizontal: 16 },
-  adminTxt: { fontSize: 13, color: '#555' },
-  footer: { fontSize: 11, color: '#AAA', textAlign: 'center', lineHeight: 17 },
+  adminTxt: { fontSize: fs(13), color: '#555' },
+  footer: { fontSize: fs(11), color: '#AAA', textAlign: 'center', lineHeight: fs(17) },
 });

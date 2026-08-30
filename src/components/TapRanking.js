@@ -12,6 +12,7 @@ import React, { useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import PanelIcon from './PanelIcon';
 import { PANEL_COLORS } from '../utils/questions';
+import { fs } from '../utils/responsive';
 
 const ROW_H = 68;
 const GAP   = 8;
@@ -109,7 +110,7 @@ export default function TapRanking({ order, onReorder, t }) {
 const styles = StyleSheet.create({
   wrap:    { marginTop: 4 },
   endRow:  { alignItems: 'center', paddingVertical: 4 },
-  endTxt:  { fontSize: 12, fontWeight: '700', letterSpacing: 0.5 },
+  endTxt:  { fontSize: fs(12), fontWeight: '700', letterSpacing: 0.5 },
   row: {
     height: ROW_H, marginBottom: GAP,
     backgroundColor: '#FFF', borderRadius: 12, borderLeftWidth: 5,
@@ -118,13 +119,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.1, shadowRadius: 3,
   },
   rank:     { width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', flexShrink: 0 },
-  rankTxt:  { color: '#FFF', fontWeight: '800', fontSize: 14 },
+  rankTxt:  { color: '#FFF', fontWeight: '800', fontSize: fs(14) },
   info:     { flex: 1 },
-  name:     { fontSize: 14, fontWeight: '700', color: '#1A1814' },
-  desc:     { fontSize: 11, color: '#888', marginTop: 1 },
+  name:     { fontSize: fs(14), fontWeight: '700', color: '#1A1814' },
+  desc:     { fontSize: fs(11), color: '#888', marginTop: 1 },
   controls: { flexDirection: 'column', alignItems: 'center', gap: 2 },
   arrow:    { padding: 4 },
   arrowDisabled: { opacity: 0.3 },
-  arrowTxt: { fontSize: 16, fontWeight: '700' },
-  hint:     { fontSize: 12, color: '#AAA', fontStyle: 'italic', textAlign: 'center', marginTop: 6 },
+  arrowTxt: { fontSize: fs(16), fontWeight: '700' },
+  hint:     { fontSize: fs(12), color: '#AAA', fontStyle: 'italic', textAlign: 'center', marginTop: 6 },
 });

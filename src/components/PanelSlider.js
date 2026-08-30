@@ -7,6 +7,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PanelIcon from './PanelIcon';
 import { PANEL_COLORS } from '../utils/questions';
 import { useLanguage } from '../i18n/LanguageContext';
+import { fs } from '../utils/responsive';
 
 const STEPS = [1, 2, 3, 4, 5, 6, 7];
 
@@ -82,9 +83,9 @@ const styles = StyleSheet.create({
   },
   body:     { flex: 1 },
   topRow:   { flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 8 },
-  name:     { fontSize: 13, fontWeight: '600', color: '#1A1814', flex: 1, lineHeight: 18, marginRight: 6 },
+  name:     { fontSize: fs(13), fontWeight: '600', color: '#1A1814', flex: 1, lineHeight: fs(18), marginRight: 6 },
   badge:    { minWidth: 28, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', paddingHorizontal: 6, flexShrink: 0 },
-  badgeTxt: { color: '#FFF', fontWeight: '800', fontSize: 13 },
+  badgeTxt: { color: '#FFF', fontWeight: '800', fontSize: fs(13) },
 
   btnRow: { flexDirection: 'row', gap: 4 },
   btn: {
@@ -96,13 +97,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#FFF',
   },
-  btnTxt:      { fontSize: 14, fontWeight: '600', color: '#555' },
+  btnTxt:      { fontSize: fs(14), fontWeight: '600', color: '#555' },
   btnTxtActive: { color: '#FFF', fontWeight: '800' },
 
   anchors:  { flexDirection: 'row', justifyContent: 'space-between', marginTop: 4 },
-  anchorL:  { fontSize: 10, color: '#AAA', fontStyle: 'italic' },
-  anchorR:  { fontSize: 10, color: '#AAA', fontStyle: 'italic' },
+  anchorL:  { fontSize: fs(10), color: '#AAA', fontStyle: 'italic' },
+  anchorR:  { fontSize: fs(10), color: '#AAA', fontStyle: 'italic' },
 
-  desc:      { fontSize: 12, fontWeight: '600', fontStyle: 'italic', marginTop: 3 },
-  descEmpty: { fontSize: 11, color: '#CCCCCC', fontStyle: 'italic', marginTop: 3 },
+  desc:      { fontSize: fs(12), fontWeight: '600', fontStyle: 'italic', marginTop: 3 },
+  descEmpty: { fontSize: fs(11), color: '#CCCCCC', fontStyle: 'italic', marginTop: 3 },
 });

@@ -8,6 +8,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'reac
 import { useAudioRecorder, useAudioPlayer, AudioModule, RecordingPresets } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
 import { AUDIO_LANGUAGES } from '../i18n/translations';
+import { fs } from '../utils/responsive';
 
 const PRESET_CODES = AUDIO_LANGUAGES.filter(l => l.code !== 'OTHER').map(l => l.code);
 
@@ -263,29 +264,29 @@ const styles = StyleSheet.create({
     borderColor: '#C8920A',
     backgroundColor: '#FFFBF0',
   },
-  hint:    { fontSize: 12, color: '#4A5C40', lineHeight: 18, marginBottom: 10 },
-  langLabel: { fontSize: 13, fontWeight: '700', color: '#2D5016', marginBottom: 6 },
-  langRequired: { color: '#CC2020', fontWeight: '800', fontSize: 14 },
-  langDone:     { color: '#2D5016', fontWeight: '700', fontSize: 13 },
+  hint:    { fontSize: fs(12), color: '#4A5C40', lineHeight: fs(18), marginBottom: 10 },
+  langLabel: { fontSize: fs(13), fontWeight: '700', color: '#2D5016', marginBottom: 6 },
+  langRequired: { color: '#CC2020', fontWeight: '800', fontSize: fs(14) },
+  langDone:     { color: '#2D5016', fontWeight: '700', fontSize: fs(13) },
   langRow:  { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
   langChip: { borderWidth: 1.5, borderColor: '#CCC', borderRadius: 16, paddingVertical: 6, paddingHorizontal: 12, backgroundColor: '#FFF' },
-  langChipTxt: { fontSize: 13, color: '#444' },
-  otherInput: { marginTop: 8, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: '#FFF', fontSize: 14 },
+  langChipTxt: { fontSize: fs(13), color: '#444' },
+  otherInput: { marginTop: 8, borderWidth: 1, borderColor: '#CCC', borderRadius: 8, paddingHorizontal: 12, paddingVertical: 8, backgroundColor: '#FFF', fontSize: fs(14) },
   micBtn: { borderWidth: 1.5, borderRadius: 20, paddingVertical: 10, paddingHorizontal: 18, alignSelf: 'flex-start' },
   recActive: { backgroundColor: '#CC2020', borderColor: '#CC2020' },
-  micLabel: { fontSize: 14, fontWeight: '600' },
+  micLabel: { fontSize: fs(14), fontWeight: '600' },
   playRow: { flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 6 },
-  doneLabel: { fontSize: 13, color: '#2D5016', fontStyle: 'italic', flex: 1 },
-  playBtn: { fontSize: 26 },
-  delBtn: { fontSize: 22 },
+  doneLabel: { fontSize: fs(13), color: '#2D5016', fontStyle: 'italic', flex: 1 },
+  playBtn: { fontSize: fs(26) },
+  delBtn: { fontSize: fs(22) },
   consentCard: {
     marginTop: 10, padding: 14, borderRadius: 12,
     backgroundColor: '#FFFBEA', borderWidth: 1, borderColor: '#E5D5A0',
   },
-  consentTitle:  { fontSize: 14, fontWeight: '700', color: '#6B5410', marginBottom: 6 },
-  consentBody:   { fontSize: 13, color: '#6B5410', lineHeight: 19, marginBottom: 12 },
+  consentTitle:  { fontSize: fs(14), fontWeight: '700', color: '#6B5410', marginBottom: 6 },
+  consentBody:   { fontSize: fs(13), color: '#6B5410', lineHeight: fs(19), marginBottom: 12 },
   consentBtn:    { borderRadius: 22, paddingVertical: 11, paddingHorizontal: 18, alignItems: 'center' },
-  consentBtnTxt: { fontSize: 14, fontWeight: '700', color: '#FFF' },
+  consentBtnTxt: { fontSize: fs(14), fontWeight: '700', color: '#FFF' },
   disabled: { marginTop: 6, flexDirection: 'row', alignItems: 'center', gap: 6 },
-  disabledText: { fontSize: 12, color: '#BBB', fontStyle: 'italic' },
+  disabledText: { fontSize: fs(12), color: '#BBB', fontStyle: 'italic' },
 });

@@ -7,6 +7,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { createAudioPlayer } from 'expo-audio';
 import * as FileSystem from 'expo-file-system/legacy';
+import { fs } from '../utils/responsive';
 
 export default function AudioPlayback({ uri, language, color = '#1A3A6B' }) {
   const [status,    setStatus]    = useState('checking'); // checking | ready | playing | missing
@@ -123,24 +124,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row', alignItems: 'center', gap: 6,
     paddingVertical: 7, paddingHorizontal: 12,
   },
-  langIcon: { fontSize: 14 },
-  langTxt:  { fontSize: 13, fontWeight: '700', color: '#FFF' },
+  langIcon: { fontSize: fs(14) },
+  langTxt:  { fontSize: fs(13), fontWeight: '700', color: '#FFF' },
   playBtn: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
     paddingVertical: 10, paddingHorizontal: 14,
   },
-  playIcon: { fontSize: 16, color: '#FFF' },
-  playTxt:  { fontSize: 14, fontWeight: '600', color: '#FFF' },
+  playIcon: { fontSize: fs(16), color: '#FFF' },
+  playTxt:  { fontSize: fs(14), fontWeight: '600', color: '#FFF' },
   checkingRow: {
     flexDirection: 'row', alignItems: 'center', gap: 8,
     marginTop: 8, padding: 8,
   },
-  checkingTxt: { fontSize: 12 },
+  checkingTxt: { fontSize: fs(12) },
   missingRow: {
     flexDirection: 'row', alignItems: 'center', gap: 6,
     marginTop: 8, padding: 8,
     backgroundColor: '#FFF5F5', borderRadius: 8,
   },
-  missingIcon: { fontSize: 16 },
-  missingTxt:  { fontSize: 12, color: '#AA0000', fontStyle: 'italic' },
+  missingIcon: { fontSize: fs(16) },
+  missingTxt:  { fontSize: fs(12), color: '#AA0000', fontStyle: 'italic' },
 });

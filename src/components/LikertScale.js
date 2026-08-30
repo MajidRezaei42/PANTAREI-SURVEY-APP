@@ -1,6 +1,7 @@
 // src/components/LikertScale.js
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { fs } from '../utils/responsive';
 
 export default function LikertScale({
   code, text, leftAnchor, rightAnchor,
@@ -40,15 +41,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1, borderBottomColor: '#E0E0E0', alignItems: 'center',
   },
   qCol:  { flex: 1, paddingRight: 8 },
-  code:  { fontSize: 10, fontWeight: '700', letterSpacing: 0.5, marginBottom: 2 },
-  qText: { fontSize: 13, color: '#1A1814', lineHeight: 18, marginBottom: 3 },
-  anchor:{ fontSize: 11, color: '#888', fontStyle: 'italic' },
+  code:  { fontSize: fs(10), fontWeight: '700', letterSpacing: 0.5, marginBottom: 2 },
+  qText: { fontSize: fs(13), color: '#1A1814', lineHeight: fs(18), marginBottom: 3 },
+  anchor:{ fontSize: fs(11), color: '#888', fontStyle: 'italic' },
   scaleCol: { alignItems: 'flex-end' },
   circles:  { flexDirection: 'row', gap: 4, marginBottom: 3 },
   circle: {
     width: 32, height: 32, borderRadius: 16, borderWidth: 2,
     alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFF',
   },
-  num:    { fontSize: 12, fontWeight: '600', color: '#444' },
-  anchorR:{ fontSize: 11, fontStyle: 'italic', textAlign: 'right' },
+  num:    { fontSize: fs(12), fontWeight: '600', color: '#444' },
+  anchorR:{ fontSize: fs(11), fontStyle: 'italic', textAlign: 'right' },
 });
